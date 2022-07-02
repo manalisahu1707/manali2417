@@ -1,45 +1,39 @@
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(MaterialApp(
     initialRoute: '/',
     routes: {
-      '/': (context) => const Coding(title: 'TRANNING',),
+      '/': (context) => const Coding(
+            title: 'TRANNING',
+          ),
       '/second': (context) => Second(),
       '/third': (context) => const Third(),
     },
   )); //MaterialApp
 }
 
-
 // function to trigger build when the app is run
 
-
 class Coding extends StatelessWidget {
+  const Coding({Key? key, required this.title}) : super(key: key);
   final String title;
-
-  const Coding({Key key, this.title}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: ElevatedButton (onPressed: () {
-          Navigator.pop(context);
-        },
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, "/Second");
+          },
           child: const Text("Get Started"),
         ),
-
       ),
     );
-
   }
 }
 
-
-
-
-
-
-class Second extends StatelessWidget  {
+class Second extends StatelessWidget {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -108,7 +102,7 @@ class Second extends StatelessWidget  {
                   },
                 )),
             Row(
-              // ignore: sort_child_properties_last
+                // ignore: sort_child_properties_last
                 children: <Widget>[
                   const Text('Does not have account?'),
                   TextButton(
@@ -117,45 +111,42 @@ class Second extends StatelessWidget  {
                       style: TextStyle(fontSize: 20),
                     ),
                     onPressed: () {
+                      {
+            Navigator.pushNamed(context, "/Second");
+          }
                       //signup screen
                     },
                   )
-                ],
-                mainAxisAlignment: MainAxisAlignment.center
-            ),
+                ], mainAxisAlignment: MainAxisAlignment.center),
           ],
         ));
   }
 }
 
-
-
-
-
 class Third extends StatelessWidget {
   const Third({Key? key}) : super(key: key);
 
-  set dateToday(DateTime dateToday) {}
-
-  @override
   // ignore: duplicate_ignore
+  @override
+  // ignore: duplicate_ignore, duplicate_ignore
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
-    return Scaffold(body: Column(
-      // ignore: prefer_const_literals_to_create_immutables
+    return Scaffold(
+      body: Column(
+        // ignore: prefer_const_literals_to_create_immutables
         children: [
-    Center(child: Text("HI"),
-    ),
-    Image(image: NetworkImage("https://png.pngtree.com/png-vector/20190413/ourlarge/pngtree-elegant-clean-certificate-vector-template-png-image_936319.jpgl")),
-    Text("You have successfully completed Hybride Mobile APP developement Course"),
-
-    Text("INSTRUCTOR NAME"
-    "Pankaj Kapoor"),
-    DateTime dateToday = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day) ;
-    ],
-    ),
-
-
+          Center(
+            child: Text("HI"),
+          ),
+          Image(
+              image: NetworkImage(
+                  "https://png.pngtree.com/png-vector/20190413/ourlarge/pngtree-elegant-clean-certificate-vector-template-png-image_936319.jpgl")),
+          Text(
+              "You have successfully completed Hybride Mobile APP developement Course"),
+          Text("INSTRUCTOR NAME"
+              "Pankaj Kapoor"),
+        ],
+      ),
     ); // Scaffold
   }
 }
